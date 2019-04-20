@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+// タスクモデル
+class TaskItem {
+  final String name;
+  final String content;
+  final String location;
+  final DateTime expire;
+  final String actor;
+
+  const TaskItem(
+      this.name, this.content, this.location, this.expire, this.actor);
+
+  @override
+  String toString() => "$name";
+}
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
