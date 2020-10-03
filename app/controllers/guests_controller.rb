@@ -25,7 +25,7 @@ class GuestsController < ApplicationController
   # POST /guests.json
   def create
     @guest = Guest.new(guest_params)
-    @room = Room.find_by(id: params[:room_id])
+    @room = Room.find(id: params[:room_id])
     @guest.save
     @room.update(available: @room.available - 1)
     redirect_to rooms_path
