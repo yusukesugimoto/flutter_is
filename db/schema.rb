@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_181105) do
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
-    t.boolean "available", default: true
+    t.boolean "available", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_09_26_181105) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.string "room_type"
-    t.integer "available"
+    t.string "room_type", null: false
+    t.integer "available", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
