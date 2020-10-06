@@ -25,9 +25,9 @@ class GuestsController < ApplicationController
   # POST /guests.json
   def create
     @guest = Guest.new(guest_params)
-    @room = Room.find(params[:room_id])
+    @room = Room.find(@guest.room_id)
     @guest.save
-    @room.update(available: @room.available - 1)
+    @room.update(available: false)
     redirect_to rooms_path
   end
 
@@ -63,6 +63,6 @@ class GuestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def guest_params
-      params.require(:guest).permit(:name, :email)
+      params.require(:guest).permit(:name, :email, :room_id)
     end
 end

@@ -1,4 +1,10 @@
-Room.create!(room_type: "normal", available: 3)
-Room.create!(room_type: "luxury", available: 1)
-Room.create!(room_type: "sweet", available: 0)
+3.times do |n|
+  Room.create!(number: n+1001)
+end
+3.times do |n|
+  Room.create!(number: n+2001)
+end
+3.times do |n|
+  Room.create!(number: n+3001)
+end
 3.times{Car.create!}

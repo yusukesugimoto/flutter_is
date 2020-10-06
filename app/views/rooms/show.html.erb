@@ -21,11 +21,13 @@
     <%= form.text_field :email %>
   </div>
 
-  <%= hidden_field_tag :room_id, @room.id %>
+  <%= form.hidden_field :room_id, value: @room.id %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<br>
 
 <%= link_to 'Back', rooms_path %>

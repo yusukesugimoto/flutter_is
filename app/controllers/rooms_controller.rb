@@ -1,16 +1,15 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all.order(created_at: :asc)
+    @rooms = Room.all.order(:created_at)
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-    @room = Room.lock.find(params[:id])
     @guest = Guest.new
   end
 
@@ -71,6 +70,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:room_type, :available)
+      params.require(:room).permit(:number, :available)
     end
 end
