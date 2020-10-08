@@ -24,10 +24,12 @@ class GuestsController < ApplicationController
   # POST /guests
   # POST /guests.json
   def create
-    @guest = Guest.new(guest_params)
-    @room = Room.find(@guest.room_id)
-    @guest.save
-    @room.update(available: false)
+    ActiveRecord::Base.transaction do
+      @guest = Guest.new(guest_params)
+      @room = Room.find(@guest.room_id)
+      @guest.save!
+      @room.update!(available: false)
+    end
     redirect_to rooms_path
   end
 
