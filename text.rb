@@ -1,2 +1,1 @@
 put "hello"
-put "hello"
